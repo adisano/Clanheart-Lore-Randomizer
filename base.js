@@ -178,34 +178,34 @@ var rpgArray = [
 ]
 
 var valuesArray = [
-	"Self",
-	"Friends",
-	"Family",
-	"Career",
-	"Wealth",
-	"Authority",
-	"Power",
-	"Honor",
-	"Faith",
-	"Loyalty",
-	"Justice",
-	"Tradition",
-	"Charity",
-	"Freedom",
-	"Community",
-	"Equality",
-	"Logic",
-	"Nature",
-	"Law",
-	"Industry",
-	"Peace",
-	"Fairness",
-	"Destiny",
-	"Glory",
-	"Knowledge",
-	"Revenge",
-	"Survival",
-	"Adventure"
+		"Self",
+		"Friends",
+		"Family",
+		"Career",
+		"Wealth",
+		"Authority",
+		"Power",
+		"Honor",
+		"Faith",
+		"Loyalty",
+		"Justice",
+		"Tradition",
+		"Charity",
+		"Freedom",
+		"Community",
+		"Equality",
+		"Logic",
+		"Nature",
+		"Law",
+		"Industry",
+		"Peace",
+		"Fairness",
+		"Destiny",
+		"Glory",
+		"Knowledge",
+		"Revenge",
+		"Survival",
+		"Adventure"
 ]
 
 var fearsArray = [
@@ -297,123 +297,128 @@ var mbtiArray = [
 	"ISTJ", "ISFJ", "INFJ", "INTJ", "INTJ", "ISTP", "ISFP", "INFP", "INTP", "ESTP", "ESFP", "ENFP", "ENTP", "ESTJ", "ESFJ", "ENFJ", "ENTJ"
 ]
 
+
+
 //End arrays
 
-var getItem = function(clickbtn){
-	var item = "ERROR 1";
-
-	if (clickbtn.attr("data-rnd") === "all"){
-		rndAll();
-	}
-	else if (clickbtn.attr("data-rnd") === "species"){
-		passItem(speciesArray,$("#rndbtnspecies"));
-	}
-	else if (clickbtn.attr("data-rnd") === "gender"){
-		passItem(genderArray,$("#rndbtngender"));
-	}
-	else if (clickbtn.attr("data-rnd") === "mbti"){
-		passItem(mbtiArray,$("#rndbtnmbti"));
-	}
-	else if (clickbtn.attr("data-rnd") === "job"){
-		passItem(jobArray,$("#rndbtnjob"));
-	}
-	else if (clickbtn.attr("data-rnd") === "align"){
-		passItem(alignArray,$("#rndbtnalign"));
-	}
-	else if (clickbtn.attr("data-rnd") === "rpg"){
-		passItem(rpgArray,$("#rndbtnrpg"));
-	}
-	else if (clickbtn.attr("data-rnd") === "values"){
-		passItem(valuesArray,$("#rndbtnvalues1"));
-		passItem(valuesArray,$("#rndbtnvalues2"));
-
-		if ($("#rndbtnvalues1").html() === $("#rndbtnvalues2").html()
-		|| $("#rndbtnvalues2").html() === $("#rndbtnvalues3").html()){
-			getItem(clickbtn)
-		}
-			passItem(valuesArray,$("#rndbtnvalues3"));
-
-		if ($("#rndbtnvalues2").html() === $("#rndbtnvalues3").html()
-		|| $("#rndbtnvalues3").html() === $("#rndbtnvalues1").html()){
-			getItem(clickbtn)
-		}
-	}
-	else if (clickbtn.attr("data-rnd") === "fears"){
-		passItem(fearsArray,$("#rndbtnfears"));
-	}
-	else if (clickbtn.attr("data-rnd") === "hobby"){
-		passItem(hobbyArray,$("#rndbtnhobby1"));
-		passItem(hobbyArray,$("#rndbtnhobby2"));
-
-		if ($("#rndbtnhobby1").html() === $("#rndbtnhobby2").html()
-		|| $("#rndbtnhobby2").html() === $("#rndbtnhobby3").html()){
-			getItem(clickbtn)
-		}
-
-		rnd = getRnd(hobbyArray.length);
-		item = hobbyArray[rnd];
-		passItem(hobbyArray,$("#rndbtnhobby3"));
-
-		if ($("#rndbtnhobby2").html() === $("#rndbtnhobby3").html()
-		|| $("#rndbtnhobby3").html() === $("#rndbtnhobby1").html()){
-			getItem(clickbtn)
-	}
-	else {
-	}
-}
-}
-
 var getRnd = function(max){
-	var min = 0;
-	return Math.floor(Math.random() * (max - min) ) + min;
+	return Math.floor(Math.random() * (max) );
 }
 
-var passItem = function(array, btn){
-	var rnd = getRnd(array.length);
-	var item = array[rnd];
-	$(btn).html(item);
+
+
+var getAll = function(){
+	getSpecies();
+	getGender();
+	getMbti();
+	getJob();
+	getHobby();
+	getAlign();
+	getValues();
+	getFears();
+	getRpg();
 }
 
-var rndAll = function(){
-		passItem(speciesArray,$("#rndbtnspecies"));
-		passItem(genderArray,$("#rndbtngender"));
-		passItem(mbtiArray,$("#rndbtnmbti"));
-		passItem(jobArray,$("#rndbtnjob"));
-		passItem(alignArray,$("#rndbtnalign"));
-		passItem(rpgArray,$("#rndbtnrpg"));
-
-		passItem(valuesArray,$("#rndbtnvalues1"));
-		passItem(valuesArray,$("#rndbtnvalues2"));
-		while ($("#rndbtnvalues1").html() === $("#rndbtnvalues2").html()
-		|| $("#rndbtnvalues2").html() === $("#rndbtnvalues3").html()){
-			passItem(valuesArray,$("#rndbtnvalues2"));}
-			passItem(valuesArray,$("#rndbtnvalues3"));
-		while ($("#rndbtnvalues2").html() === $("#rndbtnvalues3").html()
-		|| $("#rndbtnvalues3").html() === $("#rndbtnvalues1").html()){
-		passItem(valuesArray,$("#rndbtnvalues3"));
-		}
-			passItem(fearsArray,$("#rndbtnfears"));
-
-			passItem(hobbyArray,$("#rndbtnhobby1"));
-			passItem(hobbyArray,$("#rndbtnhobby2"));
-
-			if ($("#rndbtnhobby1").html() === $("#rndbtnhobby2").html()
-			|| $("#rndbtnhobby2").html() === $("#rndbtnhobby3").html()){
-			passItem(hobbyArray,$("#rndbtnhobby2"));
-			}
-
-			rnd = getRnd(hobbyArray.length);
-			item = hobbyArray[rnd];
-			passItem(hobbyArray,$("#rndbtnhobby3"));
-
-			if ($("#rndbtnhobby2").html() === $("#rndbtnhobby3").html()
-			|| $("#rndbtnhobby3").html() === $("#rndbtnhobby1").html()){
-			passItem(hobbyArray,$("#rndbtnhobby3"));
-		}else {}
+//begin array functions
+var getSpecies = function(){
+	var rnd = getRnd(speciesArray.length);
+	var item = speciesArray[rnd];
+	if (!$("#cboxspecies").is(':checked')){
+	$("#rndbtnspecies").html(item);}
 }
+var getGender = function(){
+	var rnd = getRnd(genderArray.length);
+	var item = genderArray[rnd];
+	if (!$("#cboxgender").is(':checked')){
+	$("#rndbtngender").html(item);}
+}
+var getMbti = function(){
+	var rnd = getRnd(mbtiArray.length);
+	var item = mbtiArray[rnd];
+	if (!$("#cboxmbti").is(':checked')){
+	$("#rndbtnmbti").html(item);}
+}
+var getJob = function(){
+	var rnd = getRnd(jobArray.length);
+	var item = jobArray[rnd];
+	if (!$("#cboxjob").is(':checked')){
+	$("#rndbtnjob").html(item);}
+}
+var getHobby = function(){
+//hobby1
+	var rnd = getRnd(hobbyArray.length);
+	var item = hobbyArray[rnd];
+	if (!$("#cboxhobby1").is(':checked')){
+	$("#rndbtnhobby1").html(item);}
+//hobby2
+		rnd = getRnd(valuesArray.length);
+		item = hobbyArray[rnd];
+	if (!$("#cboxhobby2").is(':checked')){
+	$("#rndbtnhobby2").html(item);}
+	if ($("#rndbtnhobby2").html() === $("#rndbtnhobby1").html()){
+		getHobby();
+	}
+//hobby3
+		rnd = getRnd(valuesArray.length);
+		item = hobbyArray[rnd];
+	if (!$("#cboxhobby3").is(':checked')){
+	$("#rndbtnhobby3").html(item);}
+	if ($("#rndbtnhobby2").html() === $("#rndbtnhobby3").html()){
+		getHobby();
+	}
+	if ($("#rndbtnhobby1").html() === $("#rndbtnhobby3").html()){
+		getHobby();
+	}
+}
+var getAlign = function(){
+	var rnd = getRnd(alignArray.length);
+	var item = alignArray[rnd];
+	if (!$("#cboxalign").is(':checked')){
+	$("#rndbtnalign").html(item);}
+}
+var getValues = function(){
+	//values1
+	var rnd = getRnd(valuesArray.length);
+	var item = valuesArray[rnd];
+	if (!$("#cboxvalues1").is(':checked')){
+	$("#rndbtnvalues1").html(item);}
+	//values2
+		rnd = getRnd(valuesArray.length);
+		item = valuesArray[rnd];
+	if (!$("#cboxvalues2").is(':checked')){
+	$("#rndbtnvalues2").html(item);}
+	if ($("#rndbtnvalues1").html() === $("#rndbtnvalues2").html()){
+		getValues();
+	}
+	//values3
+		rnd = getRnd(valuesArray.length);
+		item = valuesArray[rnd];
+	if (!$("#cboxvalues3").is(':checked')){
+	$("#rndbtnvalues3").html(item);}
+	if ($("#rndbtnvalues3").html() === $("#rndbtnvalues2").html()){
+		getValues();
+	}
+	if ($("#rndbtnvalues1").html() === $("#rndbtnvalues3").html()){
+		getValues();
+	}
+}
+var getFears = function(){
+	var rnd = getRnd(fearsArray.length);
+	var item = fearsArray[rnd];
+	if (!$("#cboxfears").is(':checked')){
+	$("#rndbtnfears").html(item);}
+}
+var getRpg = function(){
+	var rnd = getRnd(rpgArray.length);
+	var item = rpgArray[rnd];
+	if (!$("#cboxrpg").is(':checked')){
+	$("#rndbtnrpg").html(item);}
+}
+
+//end array functions
 
 $(document).ready(function(){
 //This is "wait until the entire HTML content has appeared on the users browser before processing"
 //Up until this point in this JS file, the functions have been declared but have NOT be triggered.
-	bindLeftClick("button",getItem);
+
 });

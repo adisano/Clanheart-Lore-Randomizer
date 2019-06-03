@@ -6,6 +6,20 @@
 	text-align: center;
 }
 
+label::before {
+    background-image: url("images/lock2.png");
+}
+
+:checked+label img {
+		background: #ededed;
+		border-radius: 2px;
+    background-image: url("images/lock.png");
+}
+
+:checked + label::before {
+    background-image: url("images/lock.png");
+}
+
 .btn {
   background-color: #03CEA7;
   color: #fff;
