@@ -319,7 +319,7 @@ var getAll = function(){
 	getRpg();
 }
 
-//begin array functions
+//begin array randomization functions
 var getSpecies = function(){
 	var rnd = getRnd(speciesArray.length);
 	var item = speciesArray[rnd];
@@ -414,8 +414,26 @@ var getRpg = function(){
 	if (!$("#cboxrpg").is(':checked')){
 	$("#rndbtnrpg").html(item);}
 }
+//end array randomization functions
 
-//end array functions
+//begin array picking functions
+//end array picking functions
+
+function filterFunction() {
+  var input, filter, ul, li, a, i;
+  input = document.getElementById("speciesInput");
+  filter = input.value.toUpperCase();
+  div = document.getElementById("speciesDropdown");
+  a = div.getElementsByTagName("option");
+  for (i = 0; i < a.length; i++) {
+    txtValue = a[i].textContent || a[i].innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      a[i].style.display = "";
+    } else {
+      a[i].style.display = "none";
+    }
+  }
+}
 
 $(document).ready(function(){
 //This is "wait until the entire HTML content has appeared on the users browser before processing"
